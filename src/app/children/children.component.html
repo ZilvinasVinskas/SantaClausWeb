@@ -1,0 +1,54 @@
+<h1>.</h1>
+<h2>Children</h2>
+<ul class="children">
+  <div>
+    <button routerLink="/register-child">
+      <label>Register new child</label>
+    </button>
+  </div>
+
+  <li *ngFor="let child of children">
+    <button
+      [class.selected]="child === selectedChild"
+      type="button"
+      (click)="onSelect(child)"
+    >
+      <span class="badge">{{ child.name }}</span> {{ child.surname }}
+    </button>
+    <button routerLink="/edit-child/{{ child.id }}">Edit</button>
+    <button
+      type="button"
+      class="delete"
+      title="delete child"
+      (click)="deleteChild(child)"
+    >
+      x
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedChild">
+  <h2>Presents</h2>
+  <ul class="presents">
+    <div>
+      <button routerLink="/register-present/{{ selectedChild.id }}">
+        <label>Register new present</label>
+      </button>
+    </div>
+
+    <li *ngFor="let present of presents">
+      <button>
+        <span class="badge">{{ present.name }}</span>
+      </button>
+      <button routerLink="/edit-present/{{ present.id }}">Edit</button>
+      <button
+        type="button"
+        class="delete"
+        title="delete present"
+        (click)="deletePresent(present)"
+      >
+        x
+      </button>
+    </li>
+  </ul>
+</div>

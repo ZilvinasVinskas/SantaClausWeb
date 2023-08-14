@@ -1,0 +1,11 @@
+<div *ngIf="present">
+  <h2>{{ present.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ present.id }}</div>
+  <div><span>id: </span>{{ present.childId }}</div>
+  <div>
+    <label for="present-name">Name: </label>
+    <input id="hpresent-name" [(ngModel)]="present.name" placeholder="Name" />
+  </div>
+  <button type="button" (click)="goBack()">go back</button>
+  <button type="button" (click)="save()">save</button>
+</div>
